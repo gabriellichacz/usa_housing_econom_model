@@ -1,0 +1,49 @@
+---
+title: "Ekonometria"
+author: "Gabriel Lichacz"
+date: "`r Sys.Date()`"
+output:
+  html_document:
+    df_print: paged
+---
+
+![](wydzial.png){width="50%"}
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+Przygotowanie środowiska pracy
+
+```{r}
+# czyszczenie zmiennych
+rm(list=ls()) 
+
+# instalacja i wczytanie bibliotek
+if (!("readxl" %in% rownames(installed.packages()))) install.packages("readxl") 
+#if (!("ggpubr" %in% rownames(installed.packages()))) install.packages("ggpubr")
+library(readxl)
+#library(ggpubr)
+
+# sciezka projektu
+setwd("B:/Projekty/Studia/VI_semestr/Ekonometria/R")
+
+# jezyk konsoli
+Sys.setenv(LANG = "en")
+```
+
+Wczytanie danych
+
+```{r}
+dane <- read_excel("dane.xlsx", sheet=1)
+dane <- as.data.frame(dane)
+
+# konwersja na numeric
+for (i in 1:length(dane)) { 
+  dane[,i] <- as.numeric(dane[,i])
+}
+
+# podzial danych na dane wejsciowe i wyjsciowe
+dane_x <- dane[-1]
+dane_y <- dane[,1]
+```
