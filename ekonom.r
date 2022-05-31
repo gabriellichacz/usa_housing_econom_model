@@ -9,7 +9,7 @@ library(readxl)
 #library(ggpubr)
 
 # sciezka projektu
-setwd("B:/Projekty/Studia/VI_semestr/Ekonometria/R")
+setwd("B:/Projekty/Studia/VI_semestr/Ekonometria")
 
 # jezyk konsoli
 Sys.setenv(LANG = "en")
